@@ -3,8 +3,14 @@ provider "aws" {
 }
 
 module "route53-domain-redirect" {
-  source     = "https://github.com/trebidav/terraform-module-route53-domain-redirect"
-  version    = "0.1.0"
+  source     = "https://github.com/Ibotta/terraform-module-route53-domain-redirect"
   zone       = "example.com"
+  target_url = "https://google.com"
+}
+
+module "route53-domain-redirect-subdomain" {
+  source     = "https://github.com/Ibotta/terraform-module-route53-domain-redirect"
+  zone       = "example.com"
+  subdomain  = "foo.example.com"
   target_url = "https://google.com"
 }
