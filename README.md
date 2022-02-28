@@ -10,8 +10,9 @@ Both www and apex A records are created and pointed to a CloudFront distribution
 
 ## Inputs
 
-| Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| target\_url | URL to redirect to | string | n/a | yes |
-| zone | Route53 zone name | string | n/a | yes |
+| Name        | Description                                       | Type | Default | Required |
+|-------------|---------------------------------------------------|:----:|:-----:|:--------:|
+| target\_url | URL to redirect to                                | string | n/a |   yes    |
+| zone        | Route53 zone name                                 | string | n/a |   yes    |
+| subdomain   | FQDN of subdomain that we want to redirect from   | string | n/a |    no    |
 
