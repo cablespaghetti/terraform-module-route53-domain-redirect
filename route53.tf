@@ -4,7 +4,7 @@ data "aws_route53_zone" "zone" {
 
 resource "aws_route53_record" "redirect" {
   zone_id = data.aws_route53_zone.zone.zone_id
-  name    = data.aws_route53_zone.zone.name
+  name    = local.redirect_to_subdomain ? var.source_subdomain : data.aws_route53_zone.zone.name
   type    = "A"
 
   alias {
