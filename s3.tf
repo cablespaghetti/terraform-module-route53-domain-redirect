@@ -4,7 +4,7 @@ resource "random_string" "hash" {
 }
 
 resource "aws_s3_bucket" "redirect_bucket" {
-  bucket = "redirect-${var.zone}-${lower(random_string.hash.result)}"
+  bucket = "redirect-${local.domain}-${lower(random_string.hash.result)}"
   acl    = "public-read"
 
   website {
