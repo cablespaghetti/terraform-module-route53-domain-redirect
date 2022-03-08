@@ -1,5 +1,5 @@
 resource "aws_acm_certificate" "cert" {
-  domain_name               = local.redirect_to_subdomain ? var.origin_subdomain : var.zone
+  domain_name               = local.redirect_to_subdomain ? var.source_subdomain : var.zone
   subject_alternative_names = local.redirect_to_subdomain ? [] : ["www.${var.zone}"]
   validation_method         = "DNS"
 

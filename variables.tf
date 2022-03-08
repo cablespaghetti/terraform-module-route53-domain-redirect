@@ -8,7 +8,7 @@ variable "target_url" {
   type        = string
 }
 
-variable "origin_subdomain" {
+variable "source_subdomain" {
   description = "FQDN of subdomain that we want to redirect from."
   default     = ""
   type        = string

@@ -16,7 +16,7 @@ resource "aws_cloudfront_distribution" "redirect" {
   enabled         = true
   is_ipv6_enabled = false
 
-  aliases = local.redirect_to_subdomain ? [var.origin_subdomain] : ["www.${var.zone}", var.zone]
+  aliases = local.redirect_to_subdomain ? [var.source_subdomain] : ["www.${var.zone}", var.zone]
 
   restrictions {
     geo_restriction {

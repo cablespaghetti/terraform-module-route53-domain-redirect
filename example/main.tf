@@ -1,5 +1,5 @@
 provider "aws" {
-  region  = "us-east-1"
+  region = "us-east-1"
 }
 
 module "route53-domain-redirect" {
@@ -9,8 +9,8 @@ module "route53-domain-redirect" {
 }
 
 module "route53-domain-redirect-subdomain" {
-  source     = "https://github.com/Ibotta/terraform-module-route53-domain-redirect"
-  zone       = "example.com"
-  subdomain  = "foo.example.com"
-  target_url = "https://google.com"
+  source           = "https://github.com/Ibotta/terraform-module-route53-domain-redirect"
+  zone             = "example.com"
+  source_subdomain = "foo.example.com"
+  target_url       = "https://google.com"
 }
