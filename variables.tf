@@ -13,3 +13,9 @@ variable "source_subdomain" {
   default     = ""
   type        = string
 }
+
+variable "allow_overwrite" {
+  description = "Allow route53 to overwrite the current rule"
+  default     = false
+  type        = bool
+}

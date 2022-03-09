@@ -7,6 +7,8 @@ resource "aws_route53_record" "redirect" {
   name    = local.redirect_to_subdomain ? var.source_subdomain : data.aws_route53_zone.zone.name
   type    = "A"
 
+  allow_overwrite = var.allow_overwrite
+
   alias {
     name                   = aws_cloudfront_distribution.redirect.domain_name
     zone_id                = aws_cloudfront_distribution.redirect.hosted_zone_id
@@ -19,6 +21,8 @@ resource "aws_route53_record" "redirect-www" {
   zone_id = data.aws_route53_zone.zone.zone_id
   name    = "www.${data.aws_route53_zone.zone.name}"
   type    = "A"
+
+  allow_overwrite = var.allow_overwrite
 
   alias {
     name                   = aws_cloudfront_distribution.redirect.domain_name
