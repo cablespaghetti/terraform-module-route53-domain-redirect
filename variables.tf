@@ -19,3 +19,8 @@ variable "allow_overwrite" {
   default     = false
   type        = bool
 }
+
+variable "tags" {
+  type    = map(string)
+  default = {}
+}

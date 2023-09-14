@@ -5,9 +5,44 @@ resource "random_string" "hash" {
 
 resource "aws_s3_bucket" "redirect_bucket" {
   bucket = "redirect-${local.domain}-${lower(random_string.hash.result)}"
-  acl    = "public-read"
 
   website {
     redirect_all_requests_to = var.target_url
   }
+
+  tags = var.tags
+
+}
+
+resource "aws_s3_bucket_versioning" "redirect_bucket" {
+  bucket = aws_s3_bucket.redirect_bucket.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_ownership_controls" "redirect_bucket" {
+  bucket = aws_s3_bucket.redirect_bucket.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+}
+
+resource "aws_s3_bucket_public_access_block" "redirect_bucket" {
+  bucket = aws_s3_bucket.redirect_bucket.id
+
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
+}
+
+resource "aws_s3_bucket_acl" "redirect_bucket" {
+  depends_on = [
+    aws_s3_bucket_ownership_controls.redirect_bucket,
+    aws_s3_bucket_public_access_block.redirect_bucket,
+  ]
+
+  bucket = aws_s3_bucket.redirect_bucket.id
+  acl    = "public-read"
 }
