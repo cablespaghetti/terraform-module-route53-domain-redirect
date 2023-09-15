@@ -16,3 +16,9 @@ Both www and apex A records are created and pointed to a CloudFront distribution
 | zone             | Route53 zone name                                 | string | n/a |   yes    |
 | source_subdomain | FQDN of subdomain that we want to redirect from   | string | n/a |    no    |
 
+## To Deploy
+* Merge new version into `master`
+* `git checkout master`
+* `git pull`
+* `git tag <version-tag>`
+* `git push origin <version-tag>`
