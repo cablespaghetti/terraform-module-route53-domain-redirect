@@ -40,7 +40,7 @@ resource "aws_s3_bucket_acl" "redirect_bucket" {
   ]
 
   bucket = aws_s3_bucket.redirect_bucket.id
-  acl    = "public-read"
+  acl    = "private"
 }
 
 resource "aws_s3_bucket_website_configuration" "redirect_bucket" {
