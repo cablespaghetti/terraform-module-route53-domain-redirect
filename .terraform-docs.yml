@@ -1,0 +1,10 @@
+formatter: markdown
+header-from: docs-header.md
+footer-from: CHANGELOG.md
+lockfile: false
+
+settings:
+  indent: 2
+sort:
+  enabled: true
+  by: required

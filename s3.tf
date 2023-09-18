@@ -6,10 +6,6 @@ resource "random_string" "hash" {
 resource "aws_s3_bucket" "redirect_bucket" {
   bucket = "redirect-${local.domain}-${lower(random_string.hash.result)}"
 
-  website {
-    redirect_all_requests_to = var.target_url
-  }
-
   tags = var.tags
 
 }
@@ -31,10 +27,10 @@ resource "aws_s3_bucket_ownership_controls" "redirect_bucket" {
 resource "aws_s3_bucket_public_access_block" "redirect_bucket" {
   bucket = aws_s3_bucket.redirect_bucket.id
 
-  block_public_acls       = false
-  block_public_policy     = false
-  ignore_public_acls      = false
-  restrict_public_buckets = false
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
 }
 
 resource "aws_s3_bucket_acl" "redirect_bucket" {
@@ -44,5 +40,12 @@ resource "aws_s3_bucket_acl" "redirect_bucket" {
   ]
 
   bucket = aws_s3_bucket.redirect_bucket.id
-  acl    = "public-read"
+  acl    = "private"
+}
+
+resource "aws_s3_bucket_website_configuration" "redirect_bucket" {
+  bucket = aws_s3_bucket.redirect_bucket.id
+  redirect_all_requests_to {
+    host_name = var.target_url
+  }
 }

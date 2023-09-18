@@ -50,6 +50,8 @@ resource "aws_cloudfront_distribution" "redirect" {
     ssl_support_method  = "sni-only"
   }
 
+  tags = var.tags
+
   wait_for_deployment = false
   depends_on          = [aws_acm_certificate_validation.validation]
 }
