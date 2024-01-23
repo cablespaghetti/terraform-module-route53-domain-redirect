@@ -54,4 +54,8 @@ resource "aws_cloudfront_distribution" "redirect" {
 
   wait_for_deployment = false
   depends_on          = [aws_acm_certificate_validation.validation]
+
+  lifecycle {
+    ignore_changes = [web_acl_id]
+  }
 }
