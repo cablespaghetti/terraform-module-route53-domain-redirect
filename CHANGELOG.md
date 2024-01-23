@@ -1,6 +1,8 @@
 ## Changelog
+
 ### `1.2.6`
-- ignore  `web_acl_id` in Cloudfront
+
+- ignore `web_acl_id` in Cloudfront
 - add github action for formatting terraform and docs
 
 ### `1.2.5`

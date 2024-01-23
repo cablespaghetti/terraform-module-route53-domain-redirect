@@ -92,6 +92,6 @@ In order to update the documentation the following steps should be taken:
 1. Update code as required.
 1. Update the `docs-header.md` file if needed to provide updated usage instructions or new examples.
 1. In `variables.tf` all `variables` should have a complete `description` field. 
-1. All `output` attributes should include a    comment immediately preceding the output defintion; this comment becomes the description of the attribute in the documentation. 
+1. All `output` attributes should include a comment immediately preceding the output defintion; this comment becomes the description of the attribute in the documentation. 
 1. Add a `CHANGELOG.md` record indicating the change and the new version.
 1. Run `./scripts/tf-gen.sh`.
