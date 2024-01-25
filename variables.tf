@@ -21,5 +21,5 @@ variable "allow_overwrite" {
 }
 
 variable "tags" {
-  type    = map(string)
+  type = map(string)
 }

@@ -9,8 +9,5 @@ Both www and apex A records are created and pointed to a CloudFront distribution
 **Requirements:** DNS Zone in Route53
 
 ## To Deploy
-* Merge new version into `master`
-* `git checkout master`
-* `git pull`
-* `git tag <version-tag>`
-* `git push origin <version-tag>`
+
+Please review our [Contributing docs](./.github/CONTRIBUTING.md) for the review and release process.
