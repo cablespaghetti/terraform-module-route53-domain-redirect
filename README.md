@@ -4,7 +4,16 @@
 
 This Terraform module works together with AWS Route53, S3, ACM and CloudFront to create permanent redirect of a domain to a target URL.
 
-Both www and apex A records are created and pointed to a CloudFront distribution. The distribution accepts HTTP and HTTPS connections (free autorenewing ACM certificate is used for HTTPS). The origin for CloudFront distribution is a S3 hosted website with redirect-all rule. This solution is cheap and maintenance free.
+Both www and apex A records are created and pointed to a CloudFront distribution. The distribution accepts HTTP and HTTPS* connections (free autorenewing ACM certificate is used for HTTPS). The origin for CloudFront distribution is a S3 hosted website with redirect-all rule. This solution is cheap and maintenance free.
+
+## Disclaimer
+
+* = Please note that while the distribution accepts HTTPS connections, the "vanity" domain that it creates behind the scenes may accept insecure SSL protocols (e.g. TLS 1.0 and TLS 1.1). So if you are utilizing this module to create redirects on publicly accessible domains, they may trip the SecOps's teams security scans. However, since this module redirects traffic to non-vanity domains (which hopefully don't accept insecure TLS protocols), the risk should be low. If you [communicate this to the SecOps team](https://ibotta.atlassian.net/wiki/spaces/SEC/pages/2305269274/Communicating+With+The+SecOps+Team), they should be able to mark it as such.
+
+References:
+* https://ibotta.atlassian.net/browse/TTSD-5652
+* https://www.reddit.com/r/aws/comments/156w1fh/disable_tls_v10_and_v11/
+* https://www.reddit.com/r/aws/comments/don7nl/how_to_disable_cloudfront_tls_v10_without_a/
 
 **Requirements:** DNS Zone in Route53
 
