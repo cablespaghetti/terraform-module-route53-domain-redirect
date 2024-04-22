@@ -1,5 +1,9 @@
 ## Changelog
 
+### `1.3.0`
+
+- specify minimum SSL protocol as `TLSv1.2_2021`
+
 ### `1.2.6`
 
 - ignore `web_acl_id` in Cloudfront
