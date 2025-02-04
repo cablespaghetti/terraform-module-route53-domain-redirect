@@ -1,5 +1,9 @@
 ## Changelog
 
+### `1.2.9`
+- Add variable `ttl` to allow setting the min, max, and default cache TTL for Cloudfront.
+  - Defaults to the original value of "31536000" (1 year).
+
 ### `1.2.8`
 
 - Add variable `remove_trailing_slash` to allow removing trailing slash automatically added by S3 to the target URL.
