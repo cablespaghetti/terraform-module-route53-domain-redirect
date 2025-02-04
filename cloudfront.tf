@@ -30,9 +30,9 @@ resource "aws_cloudfront_distribution" "redirect" {
     target_origin_id = aws_s3_bucket.redirect_bucket.bucket
     compress         = true
 
-    min_ttl     = 31536000
-    max_ttl     = 31536000
-    default_ttl = 31536000
+    min_ttl     = var.ttl.min
+    max_ttl     = var.ttl.max
+    default_ttl = var.ttl.default
 
     forwarded_values {
       query_string = false
