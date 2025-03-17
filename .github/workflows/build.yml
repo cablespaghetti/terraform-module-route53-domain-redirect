@@ -11,6 +11,8 @@ on:
       - '**.tf'
   workflow_dispatch:  # Allows to trigger workflow manually
   pull_request:
+    paths:
+      - '**.tf'
 
 jobs:
   terraform_check:
