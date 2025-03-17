@@ -7,6 +7,8 @@ on:
       # This helps with cache performance:
       #   https://github.com/actions/cache/blob/main/tips-and-workarounds.md#use-cache-across-feature-branches
       - main
+    paths:
+      - '**.tf'
   workflow_dispatch:  # Allows to trigger workflow manually
   pull_request:
 
@@ -17,16 +19,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Get changed files
-      id: changed-files
-      uses: tj-actions/changed-files@v39.2.0
-      with:
-        files: |
-          service/**
-        fetch_depth: 2
-
     - name: Cache ASDF
-      if: steps.changed-files.outputs.any_changed == 'true'
       id: cache-asdf
       uses: actions/cache@v3
       with:
@@ -34,5 +27,4 @@ jobs:
         key: ${{ runner.os }}-asdf
 
     - name: Check Terraform Formatting and Docs
-      if: steps.changed-files.outputs.any_changed == 'true'
       run: ./scripts/terraform_format_and_docs.sh
